@@ -4,40 +4,35 @@ import { NCard, NInput, NSpace, NButton, NForm } from "naive-ui"
 import { useRouter } from 'vue-router';
 const router = useRouter()
 
-
-
 </script>
 
 <template>
     <n-card>
         <n-form>
             <n-space vertical>
-                <n-input size="large" round placeholder="手机号" class="login-item" />
+                <n-input size="large" round placeholder="电话号" class="login-item" />
                 <br />
                 <n-input
                     size="large"
                     round
-                    placeholder="验证码"
-                    :maxlength="4"
+                    placeholder="密码"
+                    type="password"
+                    show-password-on="click"
+                    :maxlength="8"
                     class="login-item"
                 >
                     <template #suffix>
                         <!--输入框后缀-->
-                        <n-button size="large" text>获取验证码</n-button>
+                        <n-button size="large" text>忘记密码？</n-button>
                     </template>
                 </n-input>
                 <br />
-                <n-input
-                    size="large"
-                    round
-                    placeholder="设置密码"
-                    :maxlength="8"
-                    class="login-item"
-                ></n-input>
-                <br />
-                <n-button size="large" round type="primary" class="login-item">注册</n-button>
+                <n-button size="large" round type="primary" class="login-item">登录</n-button>
             </n-space>
         </n-form>
+        <!-- <br> -->
+        <!-- <n-space justify="space-between"> -->
+        <!-- </n-space> -->
     </n-card>
 </template>
 
