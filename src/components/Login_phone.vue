@@ -1,16 +1,40 @@
 <script setup lang="ts">
 import { NCard, NInput, NSpace, NButton, NForm } from "naive-ui"
-
+// import IfLogin from "../store/ifLogin";
+import axios from 'axios';
 import { useRouter } from 'vue-router';
+import { ref } from "vue";
 const router = useRouter()
 
+const phone = ref("");
+const psw = ref("");
+
+function toHome() {
+    // IfLogin.setState(true)
+    // router.push("")
+    // console.log(router.currentRoute.value.path)
+    axios.post('/user.php', {
+        phone: phone.value,
+        password: psw.value
+    })
+        .then(function (response: any) {
+            console.log(response);
+            //返回进行判断是否是用户，亦或者是什么用户
+            
+            router.push("/stu/Home");
+        })
+        .catch(function (error: any) {
+            console.log(error);
+        });
+
+}
 </script>
 
 <template>
     <n-card>
         <n-form>
             <n-space vertical>
-                <n-input size="large" round placeholder="电话号" class="login-item" />
+                <n-input size="large" round placeholder="电话号" class="login-item" v-model:value="phone" />
                 <br />
                 <n-input
                     size="large"
@@ -18,8 +42,9 @@ const router = useRouter()
                     placeholder="密码"
                     type="password"
                     show-password-on="click"
-                    :maxlength="8"
+                    :maxlength="20"
                     class="login-item"
+                    v-model:value="psw"
                 >
                     <template #suffix>
                         <!--输入框后缀-->
@@ -27,7 +52,13 @@ const router = useRouter()
                     </template>
                 </n-input>
                 <br />
-                <n-button size="large" round type="primary" class="login-item">登录</n-button>
+                <n-button
+                    size="large"
+                    round
+                    type="primary"
+                    class="login-item"
+                    v-on:click="toHome()"
+                >登录</n-button>
             </n-space>
         </n-form>
         <!-- <br> -->

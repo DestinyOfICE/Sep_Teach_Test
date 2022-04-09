@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@types/node": "^16.11.7",
+    "axios": "^0.26.1",
     "vue": "^3.2.16",
     "vue-router": "4",
     "vuex": "^4.0.2"
