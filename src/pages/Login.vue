@@ -27,37 +27,12 @@ function toPhone() {
 
 
 <template>
-    <n-card >
-        <!-- <div v-if="!isRegister"> -->
-        <!-- <n-tabs
-                justify-content="space-evenly"
-                type="line"
-                size="large"
-                default-value="login_phone"
-        >-->
+    <n-card>
         <n-h1 style="text-align: center;">账号登录</n-h1>
-        <!-- <n-tab-pane name="login_id" tab="机构账号登录"> -->
         <login_id></login_id>
-        <!-- </n-tab-pane> -->
-        <!-- </n-tabs> -->
-        <!-- <n-button
-                size="large"
-                text
-                v-on:click.native
-                style="margin: 20px;float: left;"
-                v-on:click="toRegister()"
-        >新用户注册</n-button>-->
-        <!-- <n-button size="large" text style="margin: 20px;float: right;">手机验证码登录</n-button> -->
-        <!-- </div> -->
-
-        <!-- <div v-else>
-            <n-page-header subtitle="新用户注册" @back="toPhone()">
-                <register></register>
-            </n-page-header>
-        </div>-->
     </n-card>
 </template>
-
+s
 <style>
 /* .index {
     margin: auto;

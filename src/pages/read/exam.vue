@@ -1,41 +1,39 @@
 <script setup lang="ts">
 import { NCard, NInput, NSpace, NButton, NForm, NDivider } from "naive-ui"
-import Single from "./single.vue";
-import Answer from "./answer.vue";
+import Single from "../../components/exam/single.vue";
+
+
+// const
 </script>
 
 <template>
     <div class="stu_exam">
         <n-card class="stu_exam_left" title="考试名称">
-            <div class="flex">
-                <div>
-                    <n-space>
-                        <span class="font_2">姓名：{{ "冯鸣" }}</span>
-                        <span class="font_2">学号：{{ "202003340304" }}</span>
-                    </n-space>
-                    <n-space>
-                        <span class="font_2">题量：{{ "30" }}</span>
-                        <span class="font_2">满分：{{ "100" }}</span>
-                        <span class="font_2">考试时间：{{ "2022-03-14 19:13" }}</span>
-                    </n-space>
-                </div>
-                <div>74.7分</div>
-            </div>
+            <n-space>
+                <span class="font_2">姓名：{{ "冯鸣" }}</span>
+                <span class="font_2">学号：{{ "202003340304" }}</span>
+            </n-space>
+            <n-space>
+                <span class="font_2">题量：{{ "30" }}</span>
+                <span class="font_2">满分：{{ "100" }}</span>
+                <span class="font_2">考试时间：{{ "2022-03-14 19:13" }}</span>
+            </n-space>
             <n-divider />
-
             <n-card :bordered="false" title="一.单选题（共1题，1.0分）">
-                <single></single>
-                <Answer></Answer>
+                <div v-for="i in [1]">
+                    <single v-show="true"></single>
+                    <n-input type="text" v-model:value="scores"></n-input>
+                </div>
 
-                <single></single>
-                <Answer></Answer>
-            </n-card>
-
-            <n-card :bordered="false" title="一.单选题（共1题，1.0分）">
-                <single></single>
+                <div class="next_q">
+                    <div>上一题</div>
+                    <div>下一题</div>
+                </div>
             </n-card>
         </n-card>
         <n-card class="stu_exam_right">
+            <span id="exam_time">时间</span>
+            <n-divider />
             <div>
                 <span class>1.单选题(1.0分)</span>
                 <div style="display: flex;">
@@ -59,11 +57,6 @@ import Answer from "./answer.vue";
 </template>
 
 <style>
-.flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .font_2 {
     padding: 5px;
     color: rgb(168, 168, 168);

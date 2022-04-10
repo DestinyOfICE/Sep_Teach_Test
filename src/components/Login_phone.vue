@@ -20,7 +20,7 @@ function toHome() {
         .then(function (response: any) {
             console.log(response);
             //返回进行判断是否是用户，亦或者是什么用户
-            
+
             router.push("/stu/Home");
         })
         .catch(function (error: any) {
@@ -34,7 +34,13 @@ function toHome() {
     <n-card>
         <n-form>
             <n-space vertical>
-                <n-input size="large" round placeholder="电话号" class="login-item" v-model:value="phone" />
+                <n-input
+                    size="large"
+                    round
+                    placeholder="电话号"
+                    class="login-item"
+                    v-model:value="phone"
+                />
                 <br />
                 <n-input
                     size="large"

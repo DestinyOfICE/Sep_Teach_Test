@@ -6,6 +6,7 @@ import { ref } from "vue"
 const value = ref("1")
 let disabled2 = ref(false)
 let disabled1 = ref(false)
+
 let songs = [
     {
         value: "Rock'n'Roll Star",

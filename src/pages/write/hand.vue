@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { NCard, NSpace, NButton, NTabs, NTabPane, NForm, NFormItem, NInput } from 'naive-ui'
+import { NCard, NSpace, NButton, NTabs, NTabPane, NForm, NFormItem, NInput, NModal } from 'naive-ui'
 import { useRouter } from 'vue-router';
 import { ref } from "vue"
 
 import single from '../../components/exam/single.vue';
+import bank from '../admin/bank.vue';
 
 const router = useRouter()
 
@@ -61,6 +62,18 @@ const model = ref({
     degree: { 'small': '易', 'medium': '中', 'large': '难' },
 })
 
+
+const ifshow = ref(false)
+function showSingle() {
+    ifshow.value = true
+}
+function onPositiveClick() {
+    ifshow.value = false
+}
+function onNegativeClick() {
+    ifshow.value = false
+}
+
 </script>
 
 
@@ -107,11 +120,11 @@ const model = ref({
                     <n-input placeholder v-model:value="model.score" :style="{ width: '50px' }" />
                     <span style="width: 10px;"></span>分
                 </n-form-item>
-                
+
                 <n-card>
                     <n-space>
                         <span>添加题目</span>
-                        <n-button >单选题</n-button>
+                        <n-button @click="showSingle">单选题</n-button>
                         <n-button>多选题</n-button>
                         <n-button>填空题</n-button>
                     </n-space>
@@ -119,6 +132,21 @@ const model = ref({
                 <n-card>
                     <single></single>
                 </n-card>
+
+                <!-- <div v-show="ifshow"> -->
+                <n-modal
+                    v-model:show="ifshow"
+                    :mask-closable="false"
+                    preset="dialog"
+                    positive-text="确认"
+                    negative-text="算了"
+                    @positive-click="onPositiveClick"
+                    @negative-click="onNegativeClick"
+                    style="width: 800px;"
+                >
+                    <bank></bank>
+                </n-modal>
+                <!-- </div> -->
                 <!-- <n-card
                     v-for="item in model.questions "
                     :title="item.string"
@@ -158,7 +186,7 @@ const model = ref({
                             / {{ item.bank[i] }}
                         </n-form-item>
                     </div>
-                </n-card> -->
+                </n-card>-->
             </n-form>
         </n-card>
     </div>

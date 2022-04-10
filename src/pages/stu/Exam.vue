@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { NCard, NInput, NSpace, NButton, NForm, NDivider } from "naive-ui"
 import Single from "../../components/exam/single.vue";
+
+import { useRoute } from 'vue-router';
+const route = useRoute()
+
+let paperId = route.query.paperId;
 </script>
 
 <template>
+{{paperId}}
     <div class="stu_exam">
         <n-card class="stu_exam_left" title="考试名称">
             <n-space>

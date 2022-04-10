@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 import single from "./type/single.vue"
 import multiple from "./type/multiple.vue"
 import completion from './type/completion.vue';
+import tof from "./type/TOF.vue"
 const router = useRouter();
 const value = ref(0)
 const types = ref([
@@ -19,7 +20,12 @@ const types = ref([
     {
         value: 2,
         label: "填空题"
+    },
+    {
+        value: 3,
+        label: "判断题"
     }
+
 ])
 
 function back() {
@@ -50,6 +56,9 @@ function back() {
         </div>
         <div v-if="value == 2">
             <completion></completion>
+        </div>
+        <div v-if="value == 3">
+            <tof></tof>
         </div>
     </n-card>
 </template >

@@ -78,16 +78,13 @@ const columns_3 = ref([
     }
 ])
 
+const True = true
 </script>
 
 <template>
     <n-card>
         <n-tabs size="large" type="line">
-            <n-tab-pane tab="发布考试" name="1">
-                <Exam_item></Exam_item>
-                <Exam_item></Exam_item>
-                <Exam_item></Exam_item>
-            </n-tab-pane>
+            
             <n-tab-pane tab="考情查看" name="2">
                 <n-dropdown trigger="click" :options="exams" @select="Selectexam">
                     <n-button>选择考试</n-button>

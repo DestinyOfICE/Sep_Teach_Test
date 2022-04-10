@@ -1,20 +1,35 @@
 <script setup lang="ts">
-import { NCard, NInput, NSpace, NButton, NForm, NDivider, NIcon, NRadioGroup, NRadioButton, NDatePicker } from "naive-ui"
+import { NCard, NInput, NSpace, NButton, NForm, NDivider, NIcon, NRadioGroup, NRadioButton, NDatePicker, NSelect } from "naive-ui"
 import { ref } from "vue"
 
-
+defineProps<{ ifTea: boolean, id: string, ifAca: boolean, }>()
+// defineProps<{ ifAca: boolean, id: string }>()
 const formattedValue = ref('2007.06.30 12:08:55')
+
+const readers = [
+    {
+        label: "femn",
+        value: "1",
+    }, {
+        label: "efef",
+        value: "2",
+    }, {
+        label: "gasdg",
+        value: "3",
+    },
+]
+const reader = ref("0")
+
 </script>
 
 <template>
-    <!-- <n-card style="margin: 15px 0 15px 0;"> -->
-    <div class="flex">
+    <div class="flex_exam">
         <div class="exam_icon"></div>
         <div class="right_content">
             <p class="exam_name">高数期中考</p>
             <p class="exam_status">未开始</p>
         </div>
-        <div class="tea_content">
+        <div class="tea_content" v-if="ifTea">
             <n-space>
                 <n-date-picker
                     style="width: 200px;"
@@ -26,8 +41,13 @@ const formattedValue = ref('2007.06.30 12:08:55')
                 <n-button>发布</n-button>
             </n-space>
         </div>
+        <div class="tea_content" v-if="ifAca">
+            <n-space>
+                <n-select :options="readers" v-model:value="reader"></n-select>
+                <n-button>确认</n-button>
+            </n-space>
+        </div>
     </div>
-    <!-- </n-card> -->
 </template>
 
 <style>
@@ -36,10 +56,11 @@ p {
     font-weight: 400;
     margin: 4px 0;
 }
-.flex {
+.flex_exam {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 .exam_icon {
     width: 84px;

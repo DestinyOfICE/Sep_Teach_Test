@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import My from "../../components/My.vue";
 import Exam_item from '../../components/exam/exam_item.vue';
 import { ref } from 'vue';
+import Bank from './bank.vue';
 
 
 // import IfLogin from "../store/ifLogin";
@@ -35,6 +36,9 @@ const type = ref([
     }, {
         label: "填空",
         key: "填空"
+    }, {
+        label: "判断",
+        key: "判断"
     },])
 const type_v = ref("类型")
 const degree = ref([
@@ -60,7 +64,7 @@ function SelectDegree(key: any) {
     degree_v.value = key
 }
 
-function ToNew(){
+function ToNew() {
     router.push("/admin/new")
 }
 </script>
@@ -75,48 +79,7 @@ function ToNew(){
                 <n-input type="text" v-model:value="search"></n-input>
             </n-space>
 
-            <n-space style="margin: 10px 0;">
-                <n-dropdown
-                    class="dropdown"
-                    size="huge"
-                    trigger="click"
-                    :options="course"
-                    @select="SelectCourse"
-                >
-                    <n-button class="select">{{ course_v }}</n-button>
-                </n-dropdown>
-                <n-dropdown size="huge" trigger="click" :options="type" @select="SelectType">
-                    <n-button class="select">{{ type_v }}</n-button>
-                </n-dropdown>
-                <n-dropdown size="huge" trigger="click" :options="degree" @select="SelectDegree">
-                    <n-button class="select">{{ degree_v }}</n-button>
-                </n-dropdown>
-            </n-space>
-            <n-space vertical>
-                <n-grid class="problem_item" x-gap="12" cols="12" v-for="i in [1, 2, 3]">
-                    <n-grid-item>
-                        <div class="green">123132</div>
-                    </n-grid-item>
-                    <n-grid-item :offset="5">
-                        <n-button size="small" class="green">编辑</n-button>
-                    </n-grid-item>
-                    <n-grid-item>
-                        <n-button size="small" class="green">删除</n-button>
-                    </n-grid-item>
-                    <n-grid-item>
-                        <div class="green">语文</div>
-                    </n-grid-item>
-                    <n-grid-item :offset="0">
-                        <div class="green">多选题</div>
-                    </n-grid-item>
-                    <n-grid-item>
-                        <div class="green">难</div>
-                    </n-grid-item>
-                    <n-grid-item>
-                        <div class="green">03/04</div>
-                    </n-grid-item>
-                </n-grid>
-            </n-space>
+            <bank></bank>
         </n-space>
     </n-card>
 </template>
@@ -127,18 +90,18 @@ function ToNew(){
 }
 .green {
     height: 30px;
-    /* background-color: rgba(0, 128, 0, 0.24); */
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.problem_item{
+.problem_item {
     font-size: 12px;
 }
 .problem_item:hover {
     background-color: #f2f4f7;
 }
+
 /* .dropdown *{
     text-align: center;
 } */

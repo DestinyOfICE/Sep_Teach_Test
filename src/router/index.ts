@@ -24,6 +24,11 @@ import tea_Score from "../pages/tea/score.vue"
 import write_Home from "../pages/write/Home.vue"
 import write_Hand from "../pages/write/hand.vue"
 import write_Auto from "../pages/write/auto.vue"
+
+import read_Home from "../pages/read/home.vue"
+import read_Exam from "../pages/read/exam.vue"
+
+import academic_Home from "../pages/academic/home.vue"
 const routes: Array<RouteRecordRaw> = [
   // {
   //   path: '/home',
@@ -56,6 +61,11 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/write/Home', component: write_Home },
   { path: '/write/Hand', component: write_Hand },
   { path: '/write/Auto', component: write_Auto },
+
+  { path: '/read/Home', component: read_Home },
+  { path: '/read/Exam', component: read_Exam },
+
+  { path: '/academic/Home', component: academic_Home },
 ]
 
 const router = createRouter({
