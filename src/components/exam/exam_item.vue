@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import axios from "axios";
 import { NCard, NInput, NSpace, NButton, NForm, NDivider, NIcon, NRadioGroup, NRadioButton, NDatePicker, NSelect } from "naive-ui"
-import { ref } from "vue"
+import { ref, reactive } from "vue"
 
-defineProps<{ ifTea: boolean, id: string, ifAca: boolean, }>()
+const props = defineProps<{ info: any, ifTea: boolean, ifAca: boolean, ifFinish: boolean, stuId: number }>()
 // defineProps<{ ifAca: boolean, id: string }>()
 const formattedValue = ref('2007.06.30 12:08:55')
+
+let data = reactive({
+    score: 9
+})
 
 const readers = [
     {
@@ -19,6 +24,21 @@ const readers = [
     },
 ]
 const reader = ref("0")
+if (props.ifFinish) {
+    axios.get('http://127.0.0.1/paper_finished/paper_result', {
+        params: {
+            paperId: props.info.paperId,
+            stuId: props.stuId,
+        }
+    }).then(function (response: any) {
+        console.log(response)
+        data.score = response.data.paper_result.score
+
+    }).catch(function (response: any) {
+        console.log(response)
+    })
+
+}
 
 </script>
 
@@ -26,28 +46,28 @@ const reader = ref("0")
     <div class="flex_exam">
         <div class="exam_icon"></div>
         <div class="right_content">
-            <p class="exam_name">高数期中考</p>
-            <p class="exam_status">未开始</p>
+            <p class="exam_name">{{ info.paperName }}</p>
+            <p class="exam_status">{{ info.beginTime }}</p>
         </div>
+
+        <div class="tea_content" v-if="ifFinish">
+            <span style="color: red;font-size: large;">{{ data.score }}分</span>
+        </div>
+
         <div class="tea_content" v-if="ifTea">
             <n-space>
-                <n-date-picker
-                    style="width: 200px;"
-                    v-model:formatted-value="formattedValue"
-                    value-format="yyyy.MM.dd HH:mm:ss"
-                    type="datetime"
-                    clearable
-                >{{ formattedValue }}</n-date-picker>
+                <n-date-picker style="width: 200px;" v-model:formatted-value="formattedValue"
+                    value-format="yyyy-MM-dd HH:mm:ss" type="datetime" clearable>{{ formattedValue }}</n-date-picker>
                 <n-button>发布</n-button>
             </n-space>
         </div>
+
         <div class="tea_content" v-if="ifAca">
             <n-space>
                 <n-select :options="readers" v-model:value="reader"></n-select>
                 <n-button>确认</n-button>
             </n-space>
-        </div>
-    </div>
+        </div>  </div>
 </template>
 
 <style>
@@ -56,12 +76,14 @@ p {
     font-weight: 400;
     margin: 4px 0;
 }
+
 .flex_exam {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
+
 .exam_icon {
     width: 84px;
     height: 84px;
@@ -75,6 +97,7 @@ p {
     padding-bottom: 5px;
     border-bottom: 0.5px solid #f2f2f2;
 }
+
 .exam_name {
     line-height: 20px;
     font-size: 14px;
@@ -83,6 +106,7 @@ p {
     /* max-width: 92%; */
     display: inline-block;
 }
+
 .exam_status {
     font-size: 12px;
     font-weight: 400;

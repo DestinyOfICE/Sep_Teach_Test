@@ -35,9 +35,9 @@ function auto() {
                 123
         </n-tab-pane>-->
         <!-- <n-tab-pane tab="考试" name="2"> -->
+        <!-- <Exam_item :ifAca="false" :ifTea="false" id="123" ></Exam_item>
         <Exam_item :ifAca="false" :ifTea="false" id="123"></Exam_item>
-        <Exam_item :ifAca="false" :ifTea="false" id="123"></Exam_item>
-        <Exam_item :ifAca="false" :ifTea="false" id="123"></Exam_item>
+        <Exam_item :ifAca="false" :ifTea="false" id="123"></Exam_item> -->
         <!-- </n-tab-pane> -->
 
         <!-- <My></My> -->

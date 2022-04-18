@@ -24,7 +24,7 @@ import Answer from "../../components/exam/answer.vue";
             <n-divider />
 
             <n-card :bordered="false" title="一.单选题（共1题，1.0分）">
-                <single></single>
+                <single ></single>
                 <Answer></Answer>
 
                 <single></single>

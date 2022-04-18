@@ -12,25 +12,17 @@ let disabled1 = ref(false)
 
 let songs = ref([
     {
-        value: "A",
-        label: "A. " + props.content.choicea
+        value: "T",
+        label: "T"
     },
     {
-        value: 'B',
-        label: 'B. ' + props.content.choiceb
+        value: 'F',
+        label: 'F'
     },
-    {
-        value: 'C',
-        label: 'C. ' + props.content.choicec
-    },
-    {
-        value: 'D',
-        label: 'D. ' + props.content.choiced
-    }
+
 ])
 
 watch(value, (val, preVal) => {
-    console.log(val)
     emit('getValue', [props.index, val])
 })
 
@@ -39,7 +31,6 @@ watch(value, (val, preVal) => {
 <template>
     <!-- {{ content }} -->
     <n-space vertical>
-        <!-- {{ value }} -->
 
         <span>{{ content.title }}</span>
         <n-radio-group v-model:value="value">

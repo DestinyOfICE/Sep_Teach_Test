@@ -17,7 +17,7 @@ import Single from "./single.vue";
             </n-space>
             <n-divider />
             <n-card :bordered="false" title="一.单选题（共1题，1.0分）">
-                <single></single>
+                <!-- <single></single> -->
                 <div class="next_q">
                     <div >上一题</div>
                     <div >下一题</div>

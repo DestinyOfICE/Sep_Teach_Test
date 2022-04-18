@@ -2,7 +2,6 @@
 import { NCard, NTabs, NTabPane, NButton, NPageHeader, NH1 } from 'naive-ui'
 import { useRouter } from 'vue-router';
 import { ref } from "vue"
-import axios from 'axios';
 import Login_id from "../components/Login_id.vue"
 import Login_phone from "../components/Login_phone.vue"
 // import Register from "../components/Register.vue"

@@ -6,8 +6,7 @@
 // import { useRouter } from 'vue-router';
 // const router = useRouter()
 // import {ref} from "vue"
-import Exam from './components/exam/stu_exam.vue';
-import Stu_score from './components/exam/stu_score.vue';
+
 import auto from './pages/write/auto.vue';
 import hand from './pages/write/hand.vue';
 import newVue from './pages/admin/new.vue';
